@@ -7,14 +7,14 @@ class HookUtils {
     const PH_SUMMARY = "summary";
     const PH_TESTPLAN = "testPlan";
 
-    // the first %s is the diff id, the second is the topic branch name
-    const REMOTE_BRANCH_NAME_TEMPLATE = "ES_D%s_%s";
+    // the first %s is the diff id
+    const REMOTE_BRANCH_NAME_TEMPLATE = "ES_D%s";
 
     /**
      * Create the remote branch name in an consistent way
      */
     public static function createRemoteBranchName($revisionId, $topicBranch) {
-        return pht(self::REMOTE_BRANCH_NAME_TEMPLATE, $revisionId, $topicBranch);
+        return pht(self::REMOTE_BRANCH_NAME_TEMPLATE, $revisionId);
     }
 
     /**
