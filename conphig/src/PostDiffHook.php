@@ -12,7 +12,7 @@ class PostDiffHook extends BaseHook {
 
         $revisionID = HookUtils::getStringValueFromObj(self::PH_REVISIONID, $diffObj);
         $topicBranch = HookUtils::getStringValueFromObj(self::PH_BRANCH, $diffObj);
-        if ($topicBranch) {
+        if (!$topicBranch) {
             $topicBranch = "+HEAD";
         }
 
