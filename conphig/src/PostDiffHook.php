@@ -13,7 +13,7 @@ class PostDiffHook extends BaseHook {
         $revisionID = HookUtils::getStringValueFromObj(self::PH_REVISIONID, $diffObj);
         $topicBranch = HookUtils::getStringValueFromObj(self::PH_BRANCH, $diffObj);
         if (!$topicBranch) {
-            $topicBranch = "+HEAD";
+            $topicBranch = "HEAD:refs/heads/";
         }
 
         $revisionDict = $this->getRevisionObj($workflow, $revisionID);
