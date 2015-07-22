@@ -14,6 +14,8 @@ class PostDiffHook extends BaseHook {
         $topicBranch = HookUtils::getStringValueFromObj(self::PH_BRANCH, $diffObj);
         if (!$topicBranch) {
             $topicBranch = "HEAD:refs/heads/";
+        } else {
+            $topicBranch = "$topicBranch:"
         }
 
         $revisionDict = $this->getRevisionObj($workflow, $revisionID);
@@ -104,7 +106,7 @@ class PostDiffHook extends BaseHook {
     private function pushBranchToRemote($topicBranch, $remoteBranchName) {
         // Using force here because we don't really care what was there
         // before... we just want the new changes to get CI'd.
-        $gitCommand = escapeshellcmd("git push origin '$topicBranch:$remoteBranchName' --force");
+        $gitCommand = escapeshellcmd("git push origin '$topicBranch$remoteBranchName' --force");
 
         $this->writeOut(pht(
             "Pushing to remote branch %s on GitHutb with this command:\n    %s\n",
