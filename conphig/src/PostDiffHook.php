@@ -15,7 +15,7 @@ class PostDiffHook extends BaseHook {
         if (!$topicBranch) {
             $topicBranch = "HEAD:refs/heads/";
         } else {
-            $topicBranch = "$topicBranch:"
+            $topicBranch = "$topicBranch:";
         }
 
         $revisionDict = $this->getRevisionObj($workflow, $revisionID);
